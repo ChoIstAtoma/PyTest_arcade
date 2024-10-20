@@ -6,7 +6,7 @@ from title_menu import TitleMenu
 
 # 게임 실행
 def main():
-    window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, fullscreen=True, fixed_rate=1/60, draw_rate=DRAW_RATE, update_rate=1/60)
+    window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, fullscreen=True, fixed_rate=1/60, draw_rate=DRAW_RATE)
     first_view = TitleMenu()
     first_view.setup()
     window.show_view(first_view)

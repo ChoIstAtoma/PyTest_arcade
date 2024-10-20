@@ -12,7 +12,9 @@ class TitleMenu(arcade.View):
     def __init__(self):
         super().__init__()
         self.camera = arcade.Camera2D()
-        self.scene = arcade.Scene() # 스프라이트 총괄
+
+        self.UI_manager = arcade.gui.UIManager()
+        self.UI_manager.enable()
         
         self.all_sprite_list = arcade.SpriteList()
         self.all_animation_sprite_list = arcade.SpriteList()
@@ -41,6 +43,8 @@ class TitleMenu(arcade.View):
 
         #효과음 정의
         self.heart_sound = arcade.load_sound("sounds/heartbeat1.mp3")
+
+
         
 
     def on_draw(self):
@@ -71,19 +75,19 @@ class TitleMenu(arcade.View):
         if key == arcade.key.KEY_2: #2키로 이동
             from ingame_only2key import Ingame_Only2key
             time.sleep(0.5)
-            next_scene = Ingame_Only2key()
-            self.window.show_view(next_scene)
-            next_scene.setup()
+            next_view = Ingame_Only2key()
+            self.window.show_view(next_view)
+            next_view.setup()
             #self.scene = None # 메모리 누수 방지
 
         if key == arcade.key.F10: #설정창으로 이동
             from setting_menu import SettingMenu
-            next_scene = FadeInOut(SettingMenu, True, 10)
-            self.window.show_view(next_scene)
-            #self.scene = None
+            next_view = FadeInOut(TitleMenu, SettingMenu, True, 5)
+            self.window.show_view(next_view)
+            self.scene = None
 
         if key == arcade.key.F:
-            self.skarner.center_x +=1
+            self.skarner.center_x += 100
         if key == arcade.key.ENTER:
             self.all_sprite_list.append(self.skarner)
 

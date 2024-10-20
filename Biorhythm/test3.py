@@ -49,7 +49,7 @@ class MyView(UIView):
         global SCREEN_WIDTH, SCREEN_HEIGHT
         if symbol == arcade.key.F:
             self.window.set_fullscreen(not self.window.fullscreen)
-            return True
+            return True 
 
         if symbol == arcade.key.ESCAPE:
             arcade.close_window()

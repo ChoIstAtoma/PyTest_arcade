@@ -12,7 +12,7 @@ TEX_SWITCH_GREEN = arcade.load_texture(":resources:gui_basic_assets/toggle/green
 TEX_SWITCH_RED = arcade.load_texture(":resources:gui_basic_assets/toggle/red.png")
 
 # 설정 메뉴
-class SettingMenu(arcade.gui.UIView):
+class SettingMenu(arcade.View):
     def __init__(self): 
         super().__init__()
         self.camera = arcade.Camera2D()
@@ -44,7 +44,6 @@ class SettingMenu(arcade.gui.UIView):
 
         self.re_load_sprite()
         self.create_tabs()
-        
 
 
     def re_load_sprite(self): #스프라이트 모두 불러오기
@@ -61,6 +60,7 @@ class SettingMenu(arcade.gui.UIView):
         self.tab_bar = arcade.Sprite("sprites/bar_YEllO.png", SCALING*2, 125, 900)  
         self.all_sprite_list.append(self.tab_bar)
 
+
     def on_draw_before_ui(self):
         self.all_sprite_list.draw()
         self.UI_manager.draw()
@@ -69,7 +69,7 @@ class SettingMenu(arcade.gui.UIView):
         self.key_guide.draw()
     
     def on_draw(self):
-        self.clear
+        self.clear()
 
     def on_draw_after_ui(self):
         pass
@@ -95,7 +95,7 @@ class SettingMenu(arcade.gui.UIView):
         global SCREEN_HEIGHT
         global SCALING
         global ZOOM_VELUE
-        print("11111111111111")
+
         if key == arcade.key.ENTER: #적용하기 (전체화면 해제 -> 해상도 변경 -> -> 전체화면 복구)
             
             if self.window.fullscreen == True:
@@ -103,13 +103,14 @@ class SettingMenu(arcade.gui.UIView):
                 
             self.window.set_fullscreen(False)
             
-            ZOOM_VELUE = self.zoomvelue
+            
             SCREEN_WIDTH = self.width
             SCREEN_HEIGHT = self.height
             SCALING = self.scaling
             self.window.set_size(SCREEN_WIDTH, SCREEN_HEIGHT)
             print(SCREEN_WIDTH , "SETTING" , SCREEN_HEIGHT, "SETTING", SCALING)
-
+            self.camera.viewport_width = SCREEN_WIDTH
+            self.camera.viewport_height = SCREEN_HEIGHT
             self.window.set_fullscreen(self.fullscreen)            
             
         if key == arcade.key.ESCAPE: #타이틀로 되돌아가기
@@ -141,7 +142,6 @@ class SettingMenu(arcade.gui.UIView):
         def on_click(event: UIOnClickEvent):
             self.tab_index = 0
             self.show_graphics_options(None)
-        print()
 
         # 사운드 탭 버튼
         self.sound_button = arcade.gui.UIFlatButton(text="Sound", width=150)
