@@ -12,7 +12,7 @@ TEX_SWITCH_GREEN = arcade.load_texture(":resources:gui_basic_assets/toggle/green
 TEX_SWITCH_RED = arcade.load_texture(":resources:gui_basic_assets/toggle/red.png")
 
 # 설정 메뉴
-class SettingMenu(arcade.View):
+class SettingMenu(UIView):
     def __init__(self): 
         super().__init__()
         self.camera = arcade.Camera2D()
@@ -102,7 +102,6 @@ class SettingMenu(arcade.View):
                 self.FullscreenCheck = True
                 
             self.window.set_fullscreen(False)
-            
             
             SCREEN_WIDTH = self.width
             SCREEN_HEIGHT = self.height
