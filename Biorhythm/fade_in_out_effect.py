@@ -7,8 +7,8 @@ class FadeInOut(arcade.View):
         super().__init__()
         
         # 인자로 받은 값들을 클래스 속성으로 저장
-        self.previous_view = previous_view
-        self.next_view = next_view
+        self.previous_view = previous_view()
+        self.next_view = next_view()
         self.whether_fade = whether_fade  # 인/아웃 여부. 인:0 아웃:1
         self.alpha = 0 if whether_fade else 255  # 시작 알파
         self.fade_speed = fade_speed
