@@ -57,6 +57,7 @@ class TitleMenu(arcade.View):
         #모든 텍스트 그리기
         self.title_text.draw()
         self.key_guide.draw()
+        self.UI_manager.draw()
 
 
     def on_update(self, delta_time):
