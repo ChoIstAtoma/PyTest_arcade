@@ -195,7 +195,7 @@ class SettingMenu(UIView):
         changeScreen_dropdown_button = arcade.gui.UIFlatButton(text="Screen Size", width=640)
         changeScreen_dropdown_button.place_text(anchor_x="left", align_x=45)
         changeScreen_dropdown = changeScreen_dropdown_button.add(child=UIBoxLayout(vertical=False, size_hint=(0.3, 0.3), space_between=10), anchor_x="right", align_x=10)
-        changeScreen_dropdown.add(UIDropdown(default="1920 X 1080", options=["1920 X 1080", "1280 X 720", "640 X 360"]))
+        changeScreen_dropdown.add(UIDropdown(default= 'f"{SCREEN_WIDTH} X {SCREEN_HEIGHT}"', options=['f"{SCREEN_WIDTH} X {SCREEN_HEIGHT}"', "1280 X 720", "640 X 360"]))
         self.contents.add(changeScreen_dropdown_button)
         """ChangeScreen_dropdown.on_event = self.on_dropdown_change"""
     
