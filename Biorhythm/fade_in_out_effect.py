@@ -3,7 +3,6 @@ from globals import USER_SCREEN_WIDTH, USER_SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_
 
 class FadeInOut(arcade.View):
     def __init__(self, previous_view, next_view, whether_fade, fade_speed): 
-        # arcade.View의 초기화 메서드를 호출 (매개변수 없음)
         super().__init__()
         
         # 인자로 받은 값들을 클래스 속성으로 저장
@@ -31,15 +30,16 @@ class FadeInOut(arcade.View):
             if self.alpha >= 255:
                 if self.alpha == 255:
                    self.window.show_view(FadeInOut(self.previous_view, self.next_view, False, self.fade_speed))
+                   self.scene = None
                    return
 
         else:  # 인: 밝아짐 
             self.alpha -= self.fade_speed
             if self.alpha == 0:
                 self.window.show_view(self.next_view)
+                self.scene = None
                 return
                 
-        # 알파값을 0과 255 사이로 제한
-        self.alpha = max(0, min(255, self.alpha))
+        self.alpha = max(0, min(255, self.alpha)) # 알파값을 0과 255 사이로 제한
         self.background.alpha = self.alpha
         print(self.whether_fade , "@@@@@@", self.alpha)
