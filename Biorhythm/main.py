@@ -8,8 +8,8 @@ from title_menu import TitleMenu
 def main():
     window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, fullscreen=True, fixed_rate=1/60, draw_rate=DRAW_RATE)
     first_view = TitleMenu()
-    first_view.setup()
     window.show_view(first_view)
+    first_view.setup()
     arcade.run()
     
 if __name__ == "__main__":
