@@ -7,10 +7,6 @@ import time
 from globals import USER_SCREEN_WIDTH, USER_SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT, SCALING, FULLSCREEN_RECT, ZOOM_VELUE #전역변수 갖고오기
 import fade_in_out_effect
 
-ICON_SMALLER = arcade.load_texture(":resources:gui_basic_assets/icons/smaller.png")
-TEX_SWITCH_GREEN = arcade.load_texture(":resources:gui_basic_assets/toggle/green.png")
-TEX_SWITCH_RED = arcade.load_texture(":resources:gui_basic_assets/toggle/red.png")
-
 # 설정 메뉴
 class SettingMenu(UIView):
     def __init__(self): 
@@ -59,6 +55,10 @@ class SettingMenu(UIView):
         #스프라이트 오브젝트 정의
         self.tab_bar = arcade.Sprite("sprites/bar_YEllO.png", SCALING*2, 125, 900)  
         self.all_sprite_list.append(self.tab_bar)
+        self.ICON_SMALLER = arcade.load_texture(":resources:gui_basic_assets/icons/smaller.png")
+        self.TEX_SWITCH_GREEN = arcade.load_texture(":resources:gui_basic_assets/toggle/green.png")
+        self.TEX_SWITCH_RED = arcade.load_texture(":resources:gui_basic_assets/toggle/red.png")
+
 
 
     def on_draw_before_ui(self):
